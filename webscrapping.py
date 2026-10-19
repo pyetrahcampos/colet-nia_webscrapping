@@ -1,0 +1,22 @@
+import requests
+from bs4 import BeautifulSoup
+
+
+link = "https://books.toscrape.com/"
+response = requests.get(link)
+
+print(response.status_code)
+
+site = BeautifulSoup(response.content, "html.parser")
+
+print(site.title)
+
+produtos = site.find_all("article", class_="product_pod")
+
+print(len(produtos))
+
+
+nomes = site.find_all("h3")
+
+
+print(len(nomes))
